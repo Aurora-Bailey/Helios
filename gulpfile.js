@@ -18,6 +18,7 @@ gulp.task('es6', function() {
         }))
         .pipe(order([
             "prototypes.js",
+            "engine*.js",
             "lib.js",
             "main.js",
             "**/*.js"
