@@ -34,6 +34,7 @@ gulp.task('js', ['es6'], function() {
             "jquery.min.js",
             "jquery*.js",
             "bootstrap*.js",
+            "phaser*.js",
             "main*.js",
             "**/*.js"
         ]))
