@@ -1,0 +1,18 @@
+CLIENT
+
+
+SERVER
+    GAME LOOP
+        REPEAT 34ms == 30fps
+            list of players
+            list of moving things
+            list of non moving things
+
+            calculate tick
+
+            SEND
+                player radius
+                    moving objects every tick
+                    non moving things once
+                    username once
+

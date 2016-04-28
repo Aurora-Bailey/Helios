@@ -1,0 +1,142 @@
+<html>
+<head>
+<style>
+html, body {
+margin: 0;
+padding: 0;
+block_width: 100%;
+block_height: 100%;
+}
+.block_cell{
+width: 1000px;
+height: 1000px;
+outline: 1px solid white;
+}
+.block_row, .block_cell{
+white-space: nowrap;
+display:inline-block;
+}
+.block_row {
+display:block;
+}
+.row{
+display: block;
+}
+.cell{
+/*border: 1px solid black;*/
+display: inline-block;
+width: 10px;
+height: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<script>
+function weightedRandom(obj){
+        var total = 0;
+        for(var key in obj)
+            total += obj[key];
+
+        var r = Math.random() * total;
+
+        for(var key in obj){
+            if(r < obj[key])
+                return key;
+            r -= obj[key];
+        }
+    }
+	
+function randWhole(num){
+	var min = num / 1.2, max = num * 1.2;
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+	
+var map_width = 1;
+var map_height = 1;
+
+var block_width = 100;
+var block_height = 100;
+
+var color_list = ['black','red','orange','yellow','green','blue','purple','cyan','deeppink','white'];// color list
+var cluster_size = [0,2,2,3,3,4,4,5,4,2];
+var color_rare = [0,2,2,3,3,4,4,5,4,2];
+
+var map = [];
+
+for(var e=0;e<map_height;e++){
+	map[e] = [];
+	for(var f=0;f<map_width;f++){
+		
+		
+		
+		var c = {'black': randWhole(100)
+		,'red': randWhole(5)
+		,'orange': randWhole(10)
+		,'yellow': randWhole(20)
+		,'green': randWhole(40)
+		,'blue': randWhole(80)
+		,'purple': randWhole(200)
+		,'cyan': randWhole(150)
+		,'deeppink': randWhole(80)
+		};//weight
+		
+		var q = [];
+		for(var a=0;a<block_height;a++){
+			q[a] = [];
+			for(var b=0;b<block_width;b++){
+				var color = weightedRandom(c);// c[Math.floor(Math.random() * c.length)];
+				q[a][b] = color_list.indexOf(color);
+			}
+		}
+
+		for(a=0;a<block_height;a++){
+			for(b=0;b<block_width;b++){
+				var same_color = 0;
+				var qv = q[a][b];
+			
+				for(var y= -1; y<2; y++){
+					for(var x= -1; x<2; x++){
+						if(a+y >= 0 && b+x >= 0 && a+y < block_height && b+x < block_width)
+							if(qv == q[a+y][b+x])
+								same_color++;
+					}
+				}
+				
+				if(same_color < cluster_size[qv]){
+					q[a][b] = 0;
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		map[e][f] = q;
+	}
+}
+
+var x = '<div class="block_row">';
+for(var ma=0; ma<map.length; ma++){
+	for(var mb=0; mb<map[ma].length; mb++){
+		x += '<div class="block_cell"><div class="row">';
+		for(var mc=0; mc<map[ma][mb].length; mc++){
+			for(var md=0; md<map[ma][mb][mc].length; md++){
+				var color_index = map[ma][mb][mc][md];
+				x += '<div class="cell" style="background-color: ' + color_list[color_index] + ';"></div>';
+			}
+			x += '</div><div class="row">';
+		}
+		x += '</div></div>';
+	}
+	x += '</div><div class="block_row">';
+}
+x += '</div>';
+
+
+document.body.innerHTML = x;
+</script>
+</body>
+</html>

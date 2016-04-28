@@ -114,7 +114,7 @@ var map = [
     {name: 'Vorite',
     reward: 354,
     cluster: 2,//Min cluster size 1-9
-    rarity: 500,// num per block
+    rarity: 5000,// num per block
     variance:1.2,// %higher or lower the rarity can be
     health: 100,// health -= weapon power - hardness;
     hardness: 10,
@@ -123,7 +123,7 @@ var map = [
     {name: 'Argios',
     reward: 242,
     cluster: 2,//Min cluster size 1-9
-    rarity: 200,// num per block
+    rarity: 1000,// num per block
     variance:1.2,// %higher or lower the rarity can be
     health: 100,// health -= weapon power - hardness;
     hardness: 10,
@@ -132,7 +132,7 @@ var map = [
     {name: 'Demite',
     reward: 142,
     cluster: 2,//Min cluster size 1-9
-    rarity: 100,// num per block
+    rarity: 500,// num per block
     variance:1.2,// %higher or lower the rarity can be
     health: 100,// health -= weapon power - hardness;
     hardness: 10,
@@ -141,21 +141,21 @@ var map = [
     {name: 'Blue Stuff',
     reward: 142,
     cluster: 2,//Min cluster size 1-9
-    rarity: 2000,// num per block
-    variance:1.2,// %higher or lower the rarity can be
-    health: 100,// health -= weapon power - hardness;
-    hardness: 10,
-    color: 'cyan'}
-    ,
-    {name: 'super rare',
-    reward: 142,
-    cluster: 1,//Min cluster size 1-9
-    rarity: 10,// num per block
+    rarity: 250,// num per block
     variance:1.2,// %higher or lower the rarity can be
     health: 100,// health -= weapon power - hardness;
     hardness: 10,
     color: 'lime'}
+    ,
+    {name: 'super rare',
+    reward: 142,
+    cluster: 2,//Min cluster size 1-9
+    rarity: 125,// num per block
+    variance:1.2,// %higher or lower the rarity can be
+    health: 100,// health -= weapon power - hardness;
+    hardness: 10,
+    color: 'cyan'}
 ];
-var x = engine.mapGenBlock(map);
+//var x = engine.mapGenBlock(map);
 
-engine.quickDrawMapBlock(x, map);
+//engine.quickDrawMapBlock(x, map);
